@@ -1,0 +1,72 @@
+$accordion-inactive-state-icon: "\e93a";
+$accordion-active-state-icon: "\e939";
+
+.accordion-wrapper {
+  margin-bottom: px-to-rem(21px);
+  .accordion-item {
+    &:first-child {
+      .top {
+        @include border-top-radius($border-radius);
+      }
+    }
+    &:last-child {
+      .bottom {
+        @include border-bottom-radius($border-radius);
+      }
+    }
+    &.active {
+      .dropdown-wrapper {
+        background-color: $gray-lightest;
+        &:before {
+          content: $accordion-active-state-icon;
+        }
+      }
+      .middle {
+        display: block;
+      }
+    }
+  }
+  .top {
+    @include normalize-text;
+    padding-right: $accordion-width-control + 7;
+    padding-bottom: $container-fluid;
+    padding-left: $container-fluid;
+    padding-top: $container-fluid;
+    border: 1px solid $gray-lightest;
+    position: relative;
+    &:hover {
+      cursor: pointer;
+      .dropdown-wrapper {
+        background-color: $gray-lightest;
+      }
+    }
+  }
+  .title {}
+  .dropdown-wrapper {
+    @include position(absolute, 0 0 0 null);
+    @include flex-column-center;
+    border-left: 1px solid $gray-lightest;
+    width: $accordion-width-control;
+    text-align: center;
+    height: 100%;
+    i {
+    }
+    &:before {
+      content: $accordion-inactive-state-icon;
+      font-size: $font-size-h3;
+      font-family: 'icomoon';
+    }
+  }
+  .middle {
+    border: 1px solid $gray-lightest;
+    padding: $container-fluid;
+    display: none;
+  }
+  > a {
+    color: $body-color;
+    display: block;
+    &:hover {
+      color: $link-color;
+    }
+  }
+}

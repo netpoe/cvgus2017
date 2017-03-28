@@ -1,0 +1,16 @@
+.footer {
+  @include normalize-text;
+  background-color: $gray-lightest;
+  .row {
+    > div {
+      @include flex-column-center;
+      min-height: $header-height-control;
+    }
+  }
+  .footer-nav {
+    text-align: center;
+    a {
+      margin-left: px-to-rem(21);
+    }
+  }
+}

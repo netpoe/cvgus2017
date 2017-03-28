@@ -1,0 +1,48 @@
+/*
+	Containers-custom
+*/
+.container-fluid {
+	width: 100%;
+}
+.container-xs,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xxl, {
+	@include make-container();
+}
+.container {
+	min-width: $container-xl;
+}
+.container-xs {
+	max-width: $container-xs;
+	min-width: $container-xs;
+}
+.container-sm {
+	max-width: $container-sm;
+	min-width: $container-sm;
+}
+.container-md {
+	max-width: $container-md;
+	min-width: $container-md;
+}
+.container-lg {
+	max-width: $container-lg;
+	min-width: $container-lg;
+}
+.container-xxl {
+	max-width: $container-xxl;
+	min-width: $container-xxl;
+}
+
+@media #{$md-down} {
+	.container-xs,
+	.container-sm,
+	.container-md,
+	.container-lg,
+	.container-xxl,
+	.container {
+		max-width: 100%;
+		min-width: 100%;
+	}
+}

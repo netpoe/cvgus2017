@@ -1,0 +1,42 @@
+/* 
+	EBM:Ref
+	User cards
+*/
+$user-card-height: 42px; // User cards
+$user-card-width: 56px;
+.user-card {
+	@include normalize-text;
+	@include flex-row;
+	@include clearfix;
+	margin-bottom: $container-fluid / 2;
+	position: relative;
+	width: 100%;
+	.user-pic,
+	.user-info {
+		min-height: $user-card-width;
+	}
+	.user-pic {
+		width: $user-card-width;
+		img {
+			border-radius: $border-radius;
+			height: auto;
+			width: 100%;
+		}
+	}
+	.user-info {
+		@include flex-column-center;
+		width: 100%;
+		@include children-elements {
+			display: block;
+		}
+		padding-left: $container-fluid;
+		span {}
+	}
+	&.user-card-round {
+		.user-pic {
+			img {
+				border-radius: 50%;
+			}
+		}
+	}
+}

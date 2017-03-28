@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+// Import the global styles and mixins for every template
+@import "./sass/global";
+
+h1 {
+  @include bold;
+}
+
+.hero-unit {
+  @include flex-column-center;
+  min-height: 80vh;
+  h1 {
+    margin-bottom: px-to-rem(21);
+  }
+  h2 {
+    @include serif-book;
+  }
+  .hero-nav {
+    margin-top: px-to-rem(21);
+    a {
+      margin-right: px-to-rem(21);
+    }
+  }
+}
+
+.section {
+  margin-bottom: px-to-rem(35);
+  aside {
+    margin-bottom: px-to-rem(35);
+  }
+  article {
+    @include serif-book;
+    margin-bottom: px-to-rem(35);
+  }
+  .article-head {
+    margin-bottom: px-to-rem(21);
+    h5 {
+      @include book;
+      &:last-child {
+        @include bold;
+      }
+    }
+  }
+  .section-title {
+    h3 {
+      @include book;
+      text-transform: uppercase;
+    }
+    p {
+      @include bold;
+    }
+  }
+  .section-content {
+    padding-top: px-to-rem(35);
+  }
+  .skill-item {
+    h5 {
+      @include bold;
+    }
+  }
+}
+
+@media #{$sm-down} {
+  body {
+    .hero-unit {
+      h1 {
+        font-size: $font-size-h2;
+      }
+      h2 {
+        font-size: $font-size-h4;
+      }
+    }
+  }
+}

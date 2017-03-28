@@ -1,0 +1,9 @@
+// TEXT SHADOW
+.text-shadow {
+  @include text-shadow;
+  #{$text-elements-list},
+  #{$headings-list},
+  #{$headings-class-list} {
+    @include text-shadow;
+  }  
+}

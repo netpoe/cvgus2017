@@ -1,0 +1,80 @@
+// MAIN TEXT
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+  FIREFOX dotted outline
+*/
+a {
+  outline: 0 !important;
+}
+
+// REMOVE DEFAULT MARGINS MIXIN
+.normalize-text {
+  @include normalize-text;
+}
+
+@for $i from 1 through length($headings-list) {
+	#{nth($headings-list, $i)},
+	#{nth($headings-class-list, $i)} {
+		&.normalize-text {
+			@include normalize-text;			
+		}
+	}
+}
+
+// From h1 to h3
+// @for $i from 1 through 3 {
+// 	#{nth($headings-list, $i)},
+// 	#{nth($headings-class-list, $i)} {
+// 		@include book;
+// 	}
+// }
+
+// from h4 to h6
+// @for $i from 4 through length($headings-list) {
+// 	#{nth($headings-list, $i)},
+// 	#{nth($headings-class-list, $i)} {
+// 		@include book;
+// 	}
+// }
+
+// Override headings sizes
+@for $i from 1 through length($headings-list) {
+  #{nth($headings-list, $i)} {
+    @for $j from 1 through length($headings-list) {
+      &.#{nth($headings-list, $j)} {
+        font-size: #{nth($font-size-list, $j)} !important;
+      }
+    }
+  }
+}
+
+.underline {
+	text-decoration: underline !important;
+}
+.uppercase {
+	text-transform: uppercase !important;
+}
+.capitalize {
+	text-transform: capitalize !important;
+}
+
+// Font sizes
+.x-small {
+	font-size: 72%;
+	font-style: normal;
+}
+
+/* 
+  DISABLE ANCHOR UNDERLINE ON HOVER
+*/
+// a {
+//   &:hover,
+//   &:focus,
+//   &:active {
+//     text-decoration: none !important;
+//   }
+// }
