@@ -192,7 +192,7 @@ $inverse-color: $gray-lighter !default;
 // Style anchor elements.
 
 $link-color:            $gray-dark !default;
-$link-decoration:       none !default;
+$link-decoration:       underline !default;
 $link-hover-color:      darken($link-color, 15%) !default;
 $link-hover-decoration: underline !default;
 

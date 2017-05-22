@@ -387,7 +387,7 @@ blockquote {
 
 a {
   color: #292b2c;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 a:focus, a:hover {
