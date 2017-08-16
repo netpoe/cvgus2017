@@ -11,6 +11,7 @@ let fileinclude = require('gulp-file-include');
 let source = require('vinyl-source-stream');
 let resolveNode = require('rollup-plugin-node-resolve')
 let commons = require('rollup-plugin-commonjs');
+let browserSync = require('browser-sync').create();
 
 let fs                = require('fs');
 let path              = require('path');
@@ -160,15 +161,29 @@ watchTaskList.push('global');
 
 // Fileinclude
 gulp.task('fileinclude', function() {
-  gulp.src(['./html/*.html'])
+  gulp.src(['!./html/includes/', './html/**/*.html'])
     .pipe(fileinclude({
       prefix: '@@',
       basepath: '@file'
     }))
     .pipe(gulp.dest(htmlDest));
-  gulp.watch(`${htmlSrcPath}/*.html`, ['fileinclude']);
+  gulp.watch(`${htmlSrcPath}/**/*.html`, ['fileinclude']);
 });
 watchTaskList.push('fileinclude');
+
+gulp.task('browser-sync', function() {
+  browserSync.init({
+    port: 3000,
+    open: false,
+    server: {
+      baseDir: htmlDest
+    },
+    ui: {
+      port: 3001
+    }
+  });
+});
+watchTaskList.push('browser-sync');
 
 // Build styles task
 gulp.task('styles', cssTaskList);

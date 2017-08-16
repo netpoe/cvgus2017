@@ -19,7 +19,9 @@ h1 {
   .hero-nav {
     margin-top: px-to-rem(21);
     a {
+      margin-bottom: px-to-rem(21);
       margin-right: px-to-rem(21);
+      display: inline-block;
     }
   }
 }

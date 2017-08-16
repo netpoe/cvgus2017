@@ -3298,7 +3298,9 @@ h1 {
 }
 
 .hero-unit .hero-nav a {
+  margin-bottom: 1.3125rem;
   margin-right: 1.3125rem;
+  display: inline-block;
 }
 
 .section {
