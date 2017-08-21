@@ -16,13 +16,18 @@ a {
   @include normalize-text;
 }
 
-@for $i from 1 through length($headings-list) {
-	#{nth($headings-list, $i)},
-	#{nth($headings-class-list, $i)} {
-		&.normalize-text {
-			@include normalize-text;			
-		}
-	}
+// @for $i from 1 through length($headings-list) {
+// 	#{nth($headings-list, $i)},
+// 	#{nth($headings-class-list, $i)} {
+// 		&.normalize-text {
+// 			@include normalize-text;
+// 		}
+// 	}
+// }
+
+h1,
+h6 {
+  @include bold;
 }
 
 // From h1 to h3
@@ -42,15 +47,15 @@ a {
 // }
 
 // Override headings sizes
-@for $i from 1 through length($headings-list) {
-  #{nth($headings-list, $i)} {
-    @for $j from 1 through length($headings-list) {
-      &.#{nth($headings-list, $j)} {
-        font-size: #{nth($font-size-list, $j)} !important;
-      }
-    }
-  }
-}
+// @for $i from 1 through length($headings-list) {
+//   #{nth($headings-list, $i)} {
+//     @for $j from 1 through length($headings-list) {
+//       &.#{nth($headings-list, $j)} {
+//         font-size: #{nth($font-size-list, $j)} !important;
+//       }
+//     }
+//   }
+// }
 
 .underline {
 	text-decoration: underline !important;
@@ -68,7 +73,7 @@ a {
 	font-style: normal;
 }
 
-/* 
+/*
   DISABLE ANCHOR UNDERLINE ON HOVER
 */
 // a {
