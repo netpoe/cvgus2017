@@ -1,0 +1,17 @@
+.header {
+  @include position-fixed-top(1000);
+  border-bottom: none;
+  background-color: transparent;
+}
+
+@media #{$sm-down} {
+  .header {
+    position: relative;
+    background-color: white;
+    .logo {
+      img {
+        width: $logo-width-control-mobile;
+      }
+    }
+  }
+}

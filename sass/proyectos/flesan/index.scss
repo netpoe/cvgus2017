@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
 // Import the global styles and mixins for every template
-@import "./sass/global";
+@import "./sass/cv/home/index";
 
-@import "./third-party/bootstrap4/tables";
+@import "./node_modules/bootstrap/scss/tables";

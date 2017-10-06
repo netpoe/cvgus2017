@@ -1,0 +1,10 @@
+.footer {
+  @include normalize-text;
+  background-color: $gray-100;
+  .footer-nav {
+    text-align: center;
+    a {
+      margin-left: px-to-rem(21);
+    }
+  }
+}
