@@ -44,6 +44,7 @@
   }
   h2 {
     @include serif-book;
+    font-size: $h3-font-size;
   }
   .hero-nav {
     margin-top: px-to-rem(21);
@@ -52,6 +53,12 @@
       margin-right: px-to-rem(21);
       display: inline-block;
     }
+  }
+  .img-wrapper {
+    @include bg-img-block-center;
+    border-radius: $border-radius;
+    background-size: cover;
+    height: 177px;
   }
 }
 
@@ -109,6 +116,9 @@
       }
       h2 {
         font-size: $h4-font-size;
+      }
+      .img-wrapper {
+        display: none;
       }
     }
   }
