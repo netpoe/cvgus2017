@@ -1,0 +1,41 @@
+.budget-wrapper {
+  .budget-card {
+    @include box-shadow-default;
+    .top {
+      border-top-right-radius: $border-radius;
+      border-top-left-radius: $border-radius;
+      border-bottom: 1px solid $gray-100;
+      padding: get-spacer(3);
+    }
+    .center {}
+    .bottom {
+      border-bottom-right-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+      border-top: 1px solid $gray-100;
+      padding: get-spacer(2);
+    }
+    .price {
+      @include bold;
+      font-size: $h1-font-size;
+    }
+    .currency {
+      @include book;
+    }
+    .budget-row {
+      @include flex-row;
+      .left,
+      .right {
+        padding: get-spacer(2);
+      }
+      .left {
+        @include book;
+        width: 60%;
+      }
+      .right {
+        @include bold;
+        text-align: right;
+        width: 40%;
+      }
+    }
+  }
+}

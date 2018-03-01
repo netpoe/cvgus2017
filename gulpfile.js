@@ -12,6 +12,7 @@ let source = require('vinyl-source-stream');
 let resolveNode = require('rollup-plugin-node-resolve')
 let commons = require('rollup-plugin-commonjs');
 let browserSync = require('browser-sync').create();
+let reload = browserSync.reload;
 
 let fs                = require('fs');
 let path              = require('path');
@@ -22,17 +23,17 @@ let jsTaskList        = [];
 let watchTaskList     = [];
 
 // SRC PATH definitions
-let publicFolder = '.';
+let publicFolder = './src';
 let srcFolder = '.';
 
 let cssSrcPath = `${srcFolder}/sass`;
-let cssDest    = `${publicFolder}/src/css`;
+let cssDest    = `${publicFolder}/css`;
 
 let jsSrcPath = `${srcFolder}/js/src`;
-let jsDest    = `${publicFolder}/src/js`;
+let jsDest    = `${publicFolder}/js`;
 
 let htmlSrcPath = `${srcFolder}/html`;
-let htmlDest    = `${publicFolder}/src`;
+let htmlDest    = `${publicFolder}`;
 
 // Gather Scss src files to watch and compile
 (fs.readdirSync(cssSrcPath) || []).filter(directory => {
@@ -156,6 +157,8 @@ gulp.task('global', () => {
   gulp.watch(`${cssSrcPath}/global/*.scss`, cssTaskList);
   gulp.watch(`${cssSrcPath}/_ebm-overrides.scss`, cssTaskList);
   gulp.watch(`${cssSrcPath}/global.scss`, cssTaskList);
+
+  gulp.watch(`${publicFolder}/**/**`).on('change', reload);
 });
 watchTaskList.push('global');
 

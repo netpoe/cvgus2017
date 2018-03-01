@@ -1,0 +1,15 @@
+.sitemap-list {
+  @include list-unstyled;
+  .main {
+    margin-bottom: get-spacer(3);
+    > span {
+      @include bold;
+      margin-bottom: get-spacer(2);
+      display: block;
+    }
+    > ul {
+      @include list-unstyled;
+      margin-left: get-spacer(3);
+    }
+  }
+}

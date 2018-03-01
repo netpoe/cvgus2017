@@ -1,0 +1,40 @@
+.section {
+  margin-bottom: get-spacer(5);
+  .section-title {
+    h3 {
+      @include bold;
+    }
+    h4 {
+      @include serif-book;
+    }
+  }
+  .img-wrapper {
+    margin-bottom: get-spacer(4);
+    img {
+      width: 50%;
+      height: auto;
+    }
+  }
+}
+
+.section-content {
+  .list-item {
+    &:before {
+      margin-right: get-spacer(2);
+      font-family: 'icomoon';
+      content: '\e93c';
+    }
+  }
+}
+
+
+@media #{$sm-down} {
+  .section {
+    .img-wrapper {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

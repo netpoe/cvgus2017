@@ -11070,3 +11070,126 @@ h6 {
     display: none;
   }
 }
+
+.budget-wrapper .budget-card {
+  box-shadow: 0px 3px 3px 0px rgba(49, 50, 51, 0.15);
+}
+
+.budget-wrapper .budget-card .top {
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+  border-bottom: 1px solid #f7f7f9;
+  padding: 1rem;
+}
+
+.budget-wrapper .budget-card .bottom {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-top: 1px solid #f7f7f9;
+  padding: 0.5rem;
+}
+
+.budget-wrapper .budget-card .price {
+  font-family: "Noto Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 2.5rem;
+}
+
+.budget-wrapper .budget-card .currency {
+  font-family: "Noto Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.budget-wrapper .budget-card .budget-row {
+  -ms-flex-direction: row;
+  flex-direction: row;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.budget-wrapper .budget-card .budget-row .left,
+.budget-wrapper .budget-card .budget-row .right {
+  padding: 0.5rem;
+}
+
+.budget-wrapper .budget-card .budget-row .left {
+  font-family: "Noto Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  width: 60%;
+}
+
+.budget-wrapper .budget-card .budget-row .right {
+  font-family: "Noto Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  text-align: right;
+  width: 40%;
+}
+
+.sitemap-list {
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.sitemap-list .main {
+  margin-bottom: 1rem;
+}
+
+.sitemap-list .main > span {
+  font-family: "Noto Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.sitemap-list .main > ul {
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+  margin-top: 0;
+  margin-left: 1rem;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.section .section-title h3 {
+  font-family: "Noto Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.section .section-title h4 {
+  font-family: "PT Serif", Georgia, "Times New Roman", Times, serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.section .img-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.section .img-wrapper img {
+  width: 50%;
+  height: auto;
+}
+
+.section-content .list-item:before {
+  margin-right: 0.5rem;
+  font-family: 'icomoon';
+  content: '\e93c';
+}
+
+@media only screen and (max-width: 768px) {
+  .section .img-wrapper img {
+    width: 100%;
+    height: auto;
+  }
+}

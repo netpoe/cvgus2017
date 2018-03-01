@@ -19,18 +19,18 @@
 
 // EBM variables
 @import "./sass/ebm-variables";
-@import "./node_modules/ebm/functions/ebm-functions";
-@import "./node_modules/ebm/helpers/ebm-helpers";
+@import "./node_modules/ebm/ebm/functions/ebm-functions";
+@import "./node_modules/ebm/ebm/helpers/ebm-helpers";
 @import "./sass/ebm-fonts-setup";
 @import "./sass/ebm-fonts";
 @import "./sass/ebm-bootstrap-overrides";
-@import "./node_modules/ebm/control/ebm-text-responsive-control";
-@import "./node_modules/ebm/elements/ebm-icons";
-@import "./node_modules/ebm/control/ebm-container-control";
+@import "./node_modules/ebm/ebm/control/ebm-text-responsive-control";
+@import "./node_modules/ebm/ebm/elements/ebm-icons";
+@import "./node_modules/ebm/ebm/control/ebm-container-control";
 @import "./sass/ebm-overrides";
 @import "./sass/ebm-global";
-@import "./node_modules/ebm/modules/ebm-header";
-@import "./node_modules/ebm/modules/ebm-footer";
+@import "./node_modules/ebm/ebm/modules/ebm-header";
+@import "./node_modules/ebm/ebm/modules/ebm-footer";
 
 @import "./sass/common/header";
 @import "./sass/common/footer";

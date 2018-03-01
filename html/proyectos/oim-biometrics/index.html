@@ -1,0 +1,203 @@
+@@include('head.html', {"stylesheet": "/css/proyectos/oim-biometrics/index.css", "logo": "../../img/logo_gus-codeux.png"})
+
+  <!-- Main content -->
+  <div class="cv-content">
+    <section class="hero-unit">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <h1>OIM Biometrics</h1>
+            <h2>El objetivo es completar el proyecto de recolección de datos de las personas deportadas de EUA y México y que entran por aduana aeropuerto o aduana Tecún Umán.</h2>
+            <nav class="hero-nav">
+              <a href="#descripcion">Descripción</a>
+              <a href="#observaciones">Observaciones</a>
+              <a href="#dudas">Dudas</a>
+              <a href="#sugerencias">Sugerencias</a>
+              <a href="#presupuesto">Presupuesto</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="descripcion">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <aside class="section-title">
+              <h3>Descripción</h3>
+              <h4>La recolección de datos se hace por medio de una GUI desarrollada sobre Laravel y MySQL. Un elemento crucial en el desarrollo de este producto es la integración con un sistema de lectura de información biométrica que analiza huellas digitales.</h4>
+              <h4>Actualmente el sistema funciona con una sola marca de lectores de huella digital que lee una sola huella a la vez. El sistema terminado deberá poder utilizar varias marcas de lectores y en específico poder utilizar el lector marca <em>Crossmatch</em> modelo <em>Guardian R2</em> que el cliente provee para pruebas.</h4>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="observaciones">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <aside class="section-title">
+              <h3>Observaciones del estado actual del cliente (GUI)</h3>
+              <h4>Se revisaron todas las rutas expuestas en el GUI con cada uno de los roles de usuario: admin, operador, coordinador, pantalla.</h4>
+            </aside>
+            <div class="section-content section-list">
+              <h5>Modo Operador</h5>
+              <h5 class="list-item">En modo <em>operador</em> me encontré con que el panel de nuevo registro no muestra el botón de "iniciar" si se le da clic en <em>saltar</em> al perfil anterior sin haberlo terminado.</h5>
+              <div class="img-wrapper">
+                <img src="/img/oim-biometrics/new-record.png" alt="">
+              </div>
+              <h5 class="list-item">En modo <em>operador</em> la webcam no se activa si no hay un protocolo https y tira error</h5>
+              <div class="img-wrapper">
+                <img src="/img/oim-biometrics/https-webcam.png" alt="">
+              </div>
+              <h5>Modo coordinador</h5>
+              <h5 class="list-item">En modo <em>coordinador</em> encontré claves de color que no señalan un estado específico de la ventanilla registrada en <a href="http://migracion.xiapp.info/distribute">migracion.xiapp.info/distribute</a></h5>
+              <div class="img-wrapper">
+                <img src="/img/oim-biometrics/distribute.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <aside class="section-title">
+              <h3>Observaciones técnicas del estado actual del backend</h3>
+              <h4>Se hizo una revisión general de todos los controladores, modelos, rutas y otros archivos del código fuente</h4>
+            </aside>
+            <div class="section-content">
+              <h5 class="list-item">Existen ciertos patrones en los controladores que no deben de ir en los controladores, como la manipulación de los modelos directamente en las funciones de acción de los controladores. Ejemplo, el cambio de contraseña</h5>
+              <h5 class="list-item">Los controladores de usuarios deberían estar distinguidos por los roles de cada usuario. La carencia de esto creará en un futuro un sistema poco sostenible</h5>
+              <h5 class="list-item">Se rompieron patrones "conventions" de PHP-SQL en el nombre de las tablas y las columnas: eg. stateId o useraccess debería ser state_id y user_access</h5>
+              <h5 class="list-item">Se rompieron patrones de nombres de directorios. eg. models en vez de Models</h5>
+              <h5 class="list-item">Las rutas web. routes/web.php no están agrupadas y hay patrones repetidos que pueden simplificarse</h5>
+              <h5 class="list-item">Hay files en los modelos que no son modelos como: Common.php</h5>
+              <h5 class="list-item">Hay poca limpieza y uniformidad en el estilo del código. eg. app/Libraries/EnLetras.php, existen variables con nombres ambiguos que solo el creador conocería, además de que el nombre EnLetras.php debería seguir ciertos estándares de nombramiento.</h5>
+              <h5 class="list-item">No hay ningún test. Ni funcional, ni unitario, ni de aceptación. En un futuro este sistema presentará cada vez más problemas según se vayan haciendo cambios o integraciones.</h5>
+              <h5 class="list-item">La base de datos no se creó conforme a migraciones, esto representa un riesgo en la reproducción y mantenimiento de la base de datos, así como en la integridad y seguridad de los mismos datos.</h5>
+              <h5 class="list-item">Los archivos de rutas no están distinguidos entre rutas web y de API</h5>
+              <h5 class="list-item">El nombre de las rutas no sigue el estándar de nombres de rutas. eg. nombre-de-la-ruta</h5>
+              <h5 class="list-item">Hay muchos estilos editados directamente en el HTML</h5>
+              <h5 class="list-item">Poco uso de pre-procesadores de CSS</h5>
+              <h5 class="list-item">Roles <em>hardcodeados</em> en el HTML <code>@if (\App\models\Common::checkPrivilege(7) || Auth::user()->privileges == "all")</code></h5>
+              <h5 class="list-item">No hay Seeds. En un futuro ésto sugiere que se va a estar trabajando en desarrollo con datos de usuarios reales exponiendo su privacidad.</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <aside class="section-title">
+              <h3>Observaciones técnicas del hardware biométrico</h3>
+              <h4>Realicé una investigación de las especificaciones del SDK y controladores del hardware Guardian R2. Crossmatch provee el SDK <em>L Scan Essentials</em>, que funciona para los dispositivos Tenprint y tiene las siguientes limitaciones:</h4>
+            </aside>
+            <div class="section-content">
+              <h5 class="list-item">El sistema operativo sobre el que funciona está limitado a Windows® XP, Windows Vista®, Windows 7, Windows 8, Linux® Ubuntu® (12.4, LTS) for all Guardian (with USB Interface), Patrol, Patrol ID and Verifier 320</h5>
+              <h5 class="list-item">Esto sugiere que la integración con la aplicación web actual deba realizarse mediante un puente hacia una máquina virtual de windows 8.1 montada sobre una imagen de Azure. Esta implementación tiene un costo de insfraestructura provisto por Azure. Una vez instalada la imagen, el SDK deberá proveer un canal de comunicación para consumir los datos recolectados por el hardware y exponerlos en la aplicación web.</h5>
+              <h5 class="list-item">También puede crearse una máquina virtual de Linux, Ubuntu sobre AWS para exponer un cliente e instalar L Scan Essentials para comunicarse posteriormente con el API del software.</h5>
+              <h5 class="list-item">Otros dispositivos con las mismas capacidades que los de Crossmatch funcionan sobre Windows o Linux únicamente limitando el desarrollo e integración a estas plataformas.</h5>
+              <h5 class="list-item">NOTA: Algunos dispositivos y hardware ya no están mantenidos por Crossmatch. Hay que verificar las versiones: <a href="https://www.crossmatch.com/company/end-of-life/">https://www.crossmatch.com/company/end-of-life/</a></h5>
+              <h5 class="list-item">NOTA: La descarga del software requerido para el modelo Guardian R2: L Scan Essentials requiere credenciales de acceso: <a href="https://askpersona.zendesk.com/hc/en-us/articles/203501300-Legacy-SDK-Downloads">https://askpersona.zendesk.com/hc/en-us/articles/203501300-Legacy-SDK-Downloads</a></h5>
+              <h5 class="list-item">NOTA: No he podido encontrar el PDF oficial de documentación de L Scan Essentials, el software para utilizar Guardian R2.</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="dudas">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <aside class="section-title">
+              <h3>Dudas</h3>
+            </aside>
+            <div class="section-content section-list">
+              <h5>Modo Coordinador</h5>
+              <h5 class="list-item">Cuál es la diferencia entre tipos de ventanilla</h5>
+              <h5 class="list-item">Qué hace el botón de distribuir datos</h5>
+              <div class="img-wrapper">
+                <img src="/img/oim-biometrics/distribuir-datos.png" alt="">
+              </div>
+              <h5 class="list-item">¿Es relevante que el coordinador sepa qué ventanilla está <em>en atención</em>?</h5>
+              <h5>Modo Operador</h5>
+              <h5 class="list-item">En modo <em>operador</em>, ¿es importante que el panel del formulario en el wizard no permita continuar o finalizar si los datos no están completos? <a href="http://migracion.xiapp.info/newRecord">http://migracion.xiapp.info/newRecord</a></h5>
+              <h5>Modo Pantalla</h5>
+              <h5 class="list-item">¿El modo <em>pantalla</em> está terminado? Cuáles son las expectativas del funcionamiento</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="sugerencias">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <aside class="section-title">
+              <h3>Sugerencias</h3>
+              <h4>Tras la investigación sobre la capacidad de integración del proyecto actual con el SDK y el hardware previsto por el cliente, puedo realizar las siguientes sugerencias:</h4>
+            </aside>
+            <div class="section-content section-list">
+              <h5 class="list-item"><a href="https://www.bayometric.com/fingerprint-sdk-touch-n-go-fingerprint-software-api/">Bayometric</a> provee un SDK con comunicación REST que funciona con los siguientes dispositivos con tecnología Tenprint: <a href="https://www.bayometric.com/suprema-realscan-g10-ten-fingerprint-live-scanner/">Suprema Realscan</a> y <a href="https://www.bayometric.com/integrated-biometrics-kojak/">IB Kojak</a>. Una posible migración a este hardware podría facilitar y acelerar los tiempos y calidad del desarrollo.</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="presupuesto">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <aside class="section-title">
+              <h3>Presupuesto y tiempos de entrega</h3>
+              <h4>El proyecto deberá finalizarse a finales de Abril 2018 ya habiendo aprobado el funcionamiento del mismo.</h4>
+              <h5>* Se trabajará un estimado de 30 horas semanales, 120 horas al mes</h5>
+              <h5>* El cliente deberá proveer el hardware para pruebas</h5>
+              <h5>* Deberá haber una comunicación estrecha entre el cliente y yo para afinar detalles del funcionamiento</h5>
+              <h5>* El presupuesto quincenal considera posibles extensiones en el tiempo de desarrollo debido a cambios no anticipados</h5>
+              <h5>* El presupuesto no incluye IVA</h5>
+              <h5>* El presupuesto no considera los gastos de infraestructura: servidores, dominios, bases de datos, máquinas virtuales u otros servicios ajenos al desarrollo local</h5>
+            </aside>
+            <div class="budget-wrapper">
+              <div class="row">
+                <div class="col-sm-6">
+                  <article class="budget-card">
+                    <div class="top">
+                      <div class="price"><span>Q4,800.00</span></div>
+                      <div class="currency"><span>GTQ/Quincenal | *No incluye IVA</span></div>
+                    </div>
+                    <div class="center">
+                      <div class="budget-row">
+                        <div class="left"><span>1 quincena de anticipo</span></div>
+                        <div class="right"><span>Q4,800.00</span></div>
+                      </div>
+                      <div class="budget-row">
+                        <div class="left"><span>Pagos quincenales</span></div>
+                        <div class="right"><span>Q4,800.00</span></div>
+                      </div>
+                    </div>
+                    <div class="bottom"></div>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+@@include('../../includes/include-footer.html', {"jsPath": ""})
