@@ -11193,3 +11193,8 @@ h6 {
     height: auto;
   }
 }
+
+.budget-wrapper .budget-card .budget-row .left,
+.budget-wrapper .budget-card .budget-row .right {
+  padding: 0.5rem 15px;
+}

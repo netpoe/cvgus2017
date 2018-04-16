@@ -5,3 +5,14 @@
 @import "./sass/common/budget-wrapper";
 @import "./sass/common/sitemap-list";
 @import "./sass/common/section";
+
+.budget-wrapper {
+  .budget-card {
+    .budget-row {
+      .left,
+      .right {
+        padding: get-spacer(2) $container-fluid;
+      }
+    }
+  }
+}

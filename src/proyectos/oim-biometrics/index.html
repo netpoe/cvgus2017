@@ -53,191 +53,286 @@
           <div class="col-sm-2"></div>
           <div class="col-sm-10">
             <h1>OIM Biometrics</h1>
-            <h2>El objetivo es completar el proyecto de recolección de datos de las personas deportadas de EUA y México y que entran por aduana aeropuerto o aduana Tecún Umán.</h2>
+            <small>Fecha de última modificación: 16-04-2018</small>
+            <h2>Implementación y puesta en marcha del sistema de retornados de DGM en los centros de Recepción de Fuerza Aérea Guatemalteca en Ciudad de Guatemala y Tecún Umán en San Marcos.</h2>
             <nav class="hero-nav">
-              <a href="#descripcion">Descripción</a>
-              <a href="#observaciones">Observaciones</a>
-              <a href="#dudas">Dudas</a>
-              <a href="#sugerencias">Sugerencias</a>
+              <a href="#metas">Metas</a>
+              <a href="#producto-esperado">Producto esperado</a>
+              <a href="#aportacion-tangible">Aportación tangible</a>
+              <a href="#tiempo-de-ejecucion">Tiempo de ejecución</a>
+              <a href="#obligaciones">Obligaciones</a>
+              <a href="#responsabilidades-de-la-oim">Responsabilidades de la OIM</a>
+              <a href="#informes">Informes</a>
+              <a href="#forma-de-pago">Forma de pago</a>
+              <a href="#supervision-y-desarrollo">Supervisión y desarrollo</a>
+              <a href="#privilegios">Privilegios</a>
+              <a href="#indicadores-de-rendimiento">Indicadores de rendimiento</a>
               <a href="#presupuesto">Presupuesto</a>
             </nav>
           </div>
         </div>
       </div>
     </section>
-    <section class="section" id="descripcion">
+    <section class="section" id="metas">
       <div class="container">
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-10">
             <aside class="section-title">
-              <h3>Descripción</h3>
-              <h4>La recolección de datos se hace por medio de una GUI desarrollada sobre Laravel y MySQL. Un elemento crucial en el desarrollo de este producto es la integración con un sistema de lectura de información biométrica que analiza huellas digitales.</h4>
-              <h4>Actualmente el sistema funciona con una sola marca de lectores de huella digital que lee una sola huella a la vez. El sistema terminado deberá poder utilizar varias marcas de lectores y en específico poder utilizar el lector marca <em>Crossmatch</em> modelo <em>Guardian R2</em> que el cliente provee para pruebas.</h4>
+              <h3>Metas</h3>
+              <h4>Tener un sistema integral de recolección de información de retornados, en donde se pueda recolectar el 100% de esta información y que genere estadísticas en tiempo real de los datos ingresados en cada centro de recepción y/o consulado en México y Estados Unidos.</h4>
+              <h4>Evitar la revictimización de la población retornada vulnerable, utilizando un sistema centralizado que conecte a todas las instituciones encargadas del registro y seguimiento.</h4>
             </aside>
           </div>
         </div>
       </div>
     </section>
-    <section class="section" id="observaciones">
+    <section class="section" id="producto-esperado">
       <div class="container">
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-10">
             <aside class="section-title">
-              <h3>Observaciones del estado actual del cliente (GUI)</h3>
-              <h4>Se revisaron todas las rutas expuestas en el GUI con cada uno de los roles de usuario: admin, operador, coordinador, pantalla.</h4>
-            </aside>
-            <div class="section-content section-list">
-              <h5>Modo Operador</h5>
-              <h5 class="list-item">En modo <em>operador</em> me encontré con que el panel de nuevo registro no muestra el botón de "iniciar" si se le da clic en <em>saltar</em> al perfil anterior sin haberlo terminado.</h5>
-              <div class="img-wrapper">
-                <img src="/img/oim-biometrics/new-record.png" alt="">
-              </div>
-              <h5 class="list-item">En modo <em>operador</em> la webcam no se activa si no hay un protocolo https y tira error</h5>
-              <div class="img-wrapper">
-                <img src="/img/oim-biometrics/https-webcam.png" alt="">
-              </div>
-              <h5>Modo coordinador</h5>
-              <h5 class="list-item">En modo <em>coordinador</em> encontré claves de color que no señalan un estado específico de la ventanilla registrada en <a href="http://migracion.xiapp.info/distribute">migracion.xiapp.info/distribute</a></h5>
-              <div class="img-wrapper">
-                <img src="/img/oim-biometrics/distribute.png" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-10">
-            <aside class="section-title">
-              <h3>Observaciones técnicas del estado actual del backend</h3>
-              <h4>Se hizo una revisión general de todos los controladores, modelos, rutas y otros archivos del código fuente</h4>
-            </aside>
-            <div class="section-content">
-              <h5 class="list-item">Existen ciertos patrones en los controladores que no deben de ir en los controladores, como la manipulación de los modelos directamente en las funciones de acción de los controladores. Ejemplo, el cambio de contraseña</h5>
-              <h5 class="list-item">Los controladores de usuarios deberían estar distinguidos por los roles de cada usuario. La carencia de esto creará en un futuro un sistema poco sostenible</h5>
-              <h5 class="list-item">Se rompieron patrones "conventions" de PHP-SQL en el nombre de las tablas y las columnas: eg. stateId o useraccess debería ser state_id y user_access</h5>
-              <h5 class="list-item">Se rompieron patrones de nombres de directorios. eg. models en vez de Models</h5>
-              <h5 class="list-item">Las rutas web. routes/web.php no están agrupadas y hay patrones repetidos que pueden simplificarse</h5>
-              <h5 class="list-item">Hay files en los modelos que no son modelos como: Common.php</h5>
-              <h5 class="list-item">Hay poca limpieza y uniformidad en el estilo del código. eg. app/Libraries/EnLetras.php, existen variables con nombres ambiguos que solo el creador conocería, además de que el nombre EnLetras.php debería seguir ciertos estándares de nombramiento.</h5>
-              <h5 class="list-item">No hay ningún test. Ni funcional, ni unitario, ni de aceptación. En un futuro este sistema presentará cada vez más problemas según se vayan haciendo cambios o integraciones.</h5>
-              <h5 class="list-item">La base de datos no se creó conforme a migraciones, esto representa un riesgo en la reproducción y mantenimiento de la base de datos, así como en la integridad y seguridad de los mismos datos.</h5>
-              <h5 class="list-item">Los archivos de rutas no están distinguidos entre rutas web y de API</h5>
-              <h5 class="list-item">El nombre de las rutas no sigue el estándar de nombres de rutas. eg. nombre-de-la-ruta</h5>
-              <h5 class="list-item">Hay muchos estilos editados directamente en el HTML</h5>
-              <h5 class="list-item">Poco uso de pre-procesadores de CSS</h5>
-              <h5 class="list-item">Roles <em>hardcodeados</em> en el HTML <code>@if (\App\models\Common::checkPrivilege(7) || Auth::user()->privileges == "all")</code></h5>
-              <h5 class="list-item">No hay Seeds. En un futuro ésto sugiere que se va a estar trabajando en desarrollo con datos de usuarios reales exponiendo su privacidad.</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-10">
-            <aside class="section-title">
-              <h3>Observaciones técnicas del hardware biométrico</h3>
-              <h4>Realicé una investigación de las especificaciones del SDK y controladores del hardware Guardian R2. Crossmatch provee el SDK <em>L Scan Essentials</em>, que funciona para los dispositivos Tenprint y tiene las siguientes limitaciones:</h4>
-            </aside>
-            <div class="section-content">
-              <h5 class="list-item">El sistema operativo sobre el que funciona está limitado a Windows® XP, Windows Vista®, Windows 7, Windows 8, Linux® Ubuntu® (12.4, LTS) for all Guardian (with USB Interface), Patrol, Patrol ID and Verifier 320</h5>
-              <h5 class="list-item">Esto sugiere que la integración con la aplicación web actual deba realizarse mediante un puente hacia una máquina virtual de windows 8.1 montada sobre una imagen de Azure. Esta implementación tiene un costo de insfraestructura provisto por Azure. Una vez instalada la imagen, el SDK deberá proveer un canal de comunicación para consumir los datos recolectados por el hardware y exponerlos en la aplicación web.</h5>
-              <h5 class="list-item">También puede crearse una máquina virtual de Linux, Ubuntu sobre AWS para exponer un cliente e instalar L Scan Essentials para comunicarse posteriormente con el API del software.</h5>
-              <h5 class="list-item">Otros dispositivos con las mismas capacidades que los de Crossmatch funcionan sobre Windows o Linux únicamente limitando el desarrollo e integración a estas plataformas.</h5>
-              <h5 class="list-item">NOTA: Algunos dispositivos y hardware ya no están mantenidos por Crossmatch. Hay que verificar las versiones: <a href="https://www.crossmatch.com/company/end-of-life/">https://www.crossmatch.com/company/end-of-life/</a></h5>
-              <h5 class="list-item">NOTA: La descarga del software requerido para el modelo Guardian R2: L Scan Essentials requiere credenciales de acceso: <a href="https://askpersona.zendesk.com/hc/en-us/articles/203501300-Legacy-SDK-Downloads">https://askpersona.zendesk.com/hc/en-us/articles/203501300-Legacy-SDK-Downloads</a></h5>
-              <h5 class="list-item">NOTA: No he podido encontrar el PDF oficial de documentación de L Scan Essentials, el software para utilizar Guardian R2.</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section" id="dudas">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-10">
-            <aside class="section-title">
-              <h3>Dudas</h3>
+              <h3>Productos Esperados</h3>
             </aside>
             <div class="section-content section-list">
-              <h5>Modo Coordinador</h5>
-              <h5 class="list-item">Cuál es la diferencia entre tipos de ventanilla</h5>
-              <h5 class="list-item">Qué hace el botón de distribuir datos</h5>
-              <div class="img-wrapper">
-                <img src="/img/oim-biometrics/distribuir-datos.png" alt="">
-              </div>
-              <h5 class="list-item">¿Es relevante que el coordinador sepa qué ventanilla está <em>en atención</em>?</h5>
-              <h5>Modo Operador</h5>
-              <h5 class="list-item">En modo <em>operador</em>, ¿es importante que el panel del formulario en el wizard no permita continuar o finalizar si los datos no están completos? <a href="http://migracion.xiapp.info/newRecord">http://migracion.xiapp.info/newRecord</a></h5>
-              <h5>Modo Pantalla</h5>
-              <h5 class="list-item">¿El modo <em>pantalla</em> está terminado? Cuáles son las expectativas del funcionamiento</h5>
+              <h4>Producto 1</h4>
+              <h5><strong>Plan de trabajo</strong> de la consultoría a desarrollar, en donde deberá especificar la metodología a utilizar para el desarrollo de los productos a entregar, cronograma de trabajo e insumos a utilizar dentro de la consultoría.</h5>
+              <h4>Producto 2</h4>
+              <h5>Ajustes al sistema ya desarrollado de retornados de DGM en los siguientes aspectos:</h5>
+              <h5 class="list-item">Creación y habilitación de un módulo de alertas con los siguientes aspectos:</h5>
+              <ul>
+                <li>Búsqueda de personas alertadas por medio de nombre, por tipo de alerta que maneja DGM, que son INTERPOL, Alba-Kenneth, Arraigos, PNC.</li>
+                <li>La búsqueda se realizará en dos momentos, en la carga del manifiesto, y al momento de registrar a la persona en el caso se cambie de nombre en el proceso de la entrevista.</li>
+                <li>Se establecerá una ventanilla especial en donde se asignará todas las personas con alerta para una segunda revisión.</li>
+                <li>Actualmente el sistema tiene habilitado una opción para alertas locales, pero deberá verificar si es la mejor opción o crear un webservice para consultar la base de datos del SIM/SIOM.</li>
+                <li>Otra opción es realizar un proceso de sincronización de la base de datos de alertas con la información contenida en la sede central de DGM, esto para que funcione una copia local y siempre esté disponible la información.</li>
+              </ul>
+              <h5 class="list-item">Ajustes al formato de manifiesto establecido anteriormente.  Estos ajustes van de acuerdo con la información solicitada por DGM, incluyendo los crímenes por los cuales son retornadas las personas, el número de vuelo, fecha y hora del vuelo, y procedencia del mismo.</h5>
+              <h5 class="list-item">Verificación del funcionamiento de las ventanillas, para la llamada a las personas retornadas que están en espera de atención en el centro de recepción</h5>
+              <h5 class="list-item">Verificación de la ventana de llamado, se deberá ajustar el formato y presentación así como el tipo de voz utilizado para realizar el proceso.</h5>
+              <h5 class="list-item">Se deberán crear como mínimo los siguientes reportes en el sistema</h5>
+              <ul>
+                <li>Reporte general de retornados</li>
+                <li>Acta de entrega de capturados</li>
+                <li>Acta de entrega de menores de edad</li>
+                <li>Conocimiento alerta Alba Kenneth</li>
+                <li>Oficio de rechazo de persona no guatemalteca</li>
+                <li>Reportes de vuelos por número y fecha</li>
+                <li>Reporte de personas retornadas por día, mes y año</li>
+                <li>Otros reportes que solicite DGM</li>
+              </ul>
+              <h5 class="list-item">Registro de huellas dactilares utilizando lectores de 4 huellas y lectores de 1 huella.  El funcionamiento debe ser de la siguiente forma, si la persona está registrada en el sistema se toma como una llegada nueva y se agrega a la ficha del expediente de la persona, de lo contrario se registra la huella y se crea un perfil nuevo.  El sistema deberá ser capaz de crear perfiles de usuarios para identificar la reincidencia, y la capacidad de reportar eventos o personas retornadas.  Los lectores a utilizar son para una huella la marca Digital Persona y/o Futronic, y para los de 4 huellas la marca Crossmatch.  El consultor deberá informar con tiempo a la OIM si se debe incurrir en la compra de licencias para la captura de estas huellas en el sistema.</h5>
+              <h5 class="list-item">Ingreso de la información registrada de retornados al sistema SIOM/SIM utilizando el Webservice desarrollado por DGM.</h5>
+              <h5 class="list-item">Prueba piloto final del sistema con un vuelo real con todas las funcionalidades del sistema finalizadas</h5>
+              <h4>Producto 3</h4>
+              <h5>Con el producto 2 finalizado, el consultor deberá realizar las siguientes actividades:</h5>
+              <h5 class="list-item">Configuración de servidor central y locales, con el sistema de retornados funcionando.</h5>
+              <h5 class="list-item">Puesta en marcha del sistema en centro de recepciones de Fuerza Aérea, Tecún Umán y Aeropuerto La Aurora.</h5>
+              <h5 class="list-item">Capacitación a usuarios que utilizarán el sistema en los centros de recepción de retornados.</h5>
+              <h5 class="list-item">Capacitación para administradores del sistema de retornados.</h5>
+              <h5 class="list-item">Soporte presencial de un mes al personal de FAG y Tecún Umán por cualquier problema que se presente.</h5>
+              <h5 class="list-item">Entrega de manual de usuario y técnico del sistema desarrollado.</h5>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="section" id="sugerencias">
+    <section class="section" id="aportacion-tangible">
       <div class="container">
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-10">
             <aside class="section-title">
-              <h3>Sugerencias</h3>
-              <h4>Tras la investigación sobre la capacidad de integración del proyecto actual con el SDK y el hardware previsto por el cliente, puedo realizar las siguientes sugerencias:</h4>
+              <h3>Aportación tangible y cuantificable de la asignación del trabajo</h3>
+              <h4>Sistema de retornados de DGM instalado y utilizado en los centros de recepción de la FAG, Tecún Umán y Aeropuerto La Aurora</h4>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="tiempo-de-ejecucion">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <aside class="section-title">
+              <h3>Tiempo de ejecución</h3>
+              <h4>El tiempo estimado para realizar esta consultoría es de 6 meses, a partir de la firma del contrato entre OIM y el consultor.  En caso de presentarse algún inconveniente o demora, deberá informarlo de manera oportuna a la OIM para tomar las acciones pertinentes.</h4>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="obligaciones">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <aside class="section-title">
+              <h3>Obligaciones del consultor</h3>
+              <h4>El Contratista asumirá la responsabilidad sobre la ejecución total de la Consultoría, para que esta se realice en óptimas condiciones técnicas</h4>
             </aside>
             <div class="section-content section-list">
-              <h5 class="list-item"><a href="https://www.bayometric.com/fingerprint-sdk-touch-n-go-fingerprint-software-api/">Bayometric</a> provee un SDK con comunicación REST que funciona con los siguientes dispositivos con tecnología Tenprint: <a href="https://www.bayometric.com/suprema-realscan-g10-ten-fingerprint-live-scanner/">Suprema Realscan</a> y <a href="https://www.bayometric.com/integrated-biometrics-kojak/">IB Kojak</a>. Una posible migración a este hardware podría facilitar y acelerar los tiempos y calidad del desarrollo.</h5>
+              <h5 class="list-item">Será obligación primordial del Contratista, ejecutar la Consultoría de acuerdo con los Términos de Referencia; Propuesta Técnica y Económica; y Cronograma.</h5>
+              <h5 class="list-item">Suministrar el personal competente y adecuado para ejecutar las actividades en las Propuestas Técnicas y Económicas, y el cronograma, en la mejor manera posible.</h5>
+              <h5 class="list-item">Pagar cumplidamente al personal a su cargo los honorarios, prestaciones, seguros, bonificaciones y demás beneficios complementarios que ordene la ley. La OIM bajo ningún concepto, asumirá responsabilidades por omisiones legales del Contratista en este aspecto.</h5>
+              <h5 class="list-item">El Contratista deberá dar cumplimiento a la legislación vigente sobre el personal que supervise y emplee para las actividades.</h5>
+              <h5 class="list-item">Será obligación del Contratista que el personal empleado durante el transcurso de la consultoría sea competente e idóneo, además de contar con la experiencia suficiente para acometer de la mejor manera las labores encomendadas.</h5>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <section class="section" id="responsabilidades-de-la-oim">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <aside class="section-title">
+              <h3>Responsabilidades de la oim</h3>
+              <h4>La OIM se compromete a:</h4>
+            </aside>
+            <div class="section-content section-list">
+              <h5 class="list-item">Mantener comunicación constante con la empresa o institución contratada.</h5>
+              <h5 class="list-item">Proporcionar al consultor la información de contacto de actores clave para la consultoría.</h5>
+              <h5 class="list-item">Revisar y retroalimentar los informes presentados en un término máximo de 10 días hábiles.</h5>
+              <h5 class="list-item">Los pagos correspondientes a los productos recibidos se realizarán en un plazo no mayor a 15 días hábiles después de notificada la aprobación de los mismos.</h5>
+              <h5 class="list-item">Cubrir los gastos de traslado del consultor al interior del país, en el caso sea necesario.</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="informes">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <aside class="section-title">
+              <h3>Informes</h3>
+              <h4>El contratista realizará y entregará a la supervisión de OIM Informes de medio término y final, para su aprobación. Adicionalmente, se recibirán informes cortos mensuales, en los cuales se consigne:</h4>
+            </aside>
+            <div class="section-content section-list">
+              <h5 class="list-item">Un listado de actividades realizadas y actores clave involucrados. </h5>
+              <h5 class="list-item">Minutas de reuniones de consulta.</h5>
+              <h5 class="list-item">Reporte intermedio posterior a la finalización del producto 2.</h5>
+              <h5 class="list-item">Reporte final narrativo de la implementación del sistema.</h5>
+              <h5>LOS COSTOS EN QUE SE INCURRA PARA LA PREPARACIÓN Y PRESENTACIÓN DE LOS INFORMES, CORRERÁN POR CUENTA DEL CONTRATISTA Y DEBERÁN ESTAR INCLUIDOS EN LOS GASTOS ADMINISTRATIVOS DEL CONTRATO.</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="forma-de-pago">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <aside class="section-title">
+              <h3>FORMA DE PAGO</h3>
+              <h4>Los pagos de esta consultoría se realizarán una vez los productos sean aprobados por OIM de la siguiente manera:</h4>
+            </aside>
+            <div class="section-content section-list">
+              <h5 class="list-item">Un primer pago correspondiente al 20% contra entrega y aprobación del producto 1</h5>
+              <h5 class="list-item">Un segundo pago correspondiente al 50% contra entrega y aprobación del producto 2</h5>
+              <h5 class="list-item">Un tercer pago correspondiente al 30% contra entrega y aprobación del producto 3 y del informe final</h5>
+              <h5>Todos los productos serán aprobados por la OIM</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="supervision-y-desarrollo">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <aside class="section-title">
+              <h3>SUPERVISIÓN Y DESARROLLO DE LOS TRABAJOS</h3>
+              <h4>La coordinación y vigilancia de la ejecución y cumplimiento del contrato serán ejercidos por la OIM. El Contratista deberá permitir a la OIM llevar a cabo esta supervisión sin obstrucción alguna. La OIM podrá solicitar información adicional a la que se especifica en estos Términos de Referencia y el contrato. El Contratista estará obligado a suministrarla dentro de los términos y plazo solicitados por la OIM.</h4>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="privilegios">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <aside class="section-title">
+              <h3>PRIVILEGIOS E INMUNIDADES</h3>
+              <h4>Ninguna disposición de las cláusulas del contrato ni de los Términos de Referencia se entenderá como renuncia, explícita o implícita a ninguno de los privilegios e inmunidades de que en la actualidad goza la OIM.</h4>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="indicadores-de-rendimiento">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <aside class="section-title">
+              <h3>INDICADORES DE RENDIMIENTO</h3>
+            </aside>
+            <div class="section-content section-list">
+              <h4>Producto 1</h4>
+              <h5 class="list-item">El producto 1 se entregará en 5 días calendario a partir de la firma del contrato.</h5>
+              <h5 class="list-item">Plan de trabajo</h5>
+              <h4>Producto 2</h4>
+              <h5 class="list-item">Al menos 3 reuniones con DGM y OIM con sus minutas respectivas.</h5>
+              <h5 class="list-item">Sistema completado y funcionando.</h5>
+              <h4>Producto 3</h4>
+              <h5 class="list-item">Al menos 20 personas capacitadas en el uso del sistema.</h5>
+              <h5 class="list-item">Al menos dos personas capacitadas en el uso de la administración del sistema.</h5>
+              <h5 class="list-item">Mínimo de 2 minutas de reuniones realizadas.</h5>
+              <h5 class="list-item">Sistema instalado y funcionando en los centros de recepción.</h5>
+              <h5 class="list-item">Informe final en donde se explica las horas y días que se dio el soporte presencial en cada centro de recepción</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="presupuesto">
       <div class="container">
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-10">
             <aside class="section-title">
-              <h3>Presupuesto y tiempos de entrega</h3>
-              <h4>El proyecto deberá finalizarse a finales de Abril 2018 ya habiendo aprobado el funcionamiento del mismo.</h4>
-              <h5>* Se trabajará un estimado de 30 horas semanales, 120 horas al mes</h5>
-              <h5>* El cliente deberá proveer el hardware para pruebas</h5>
-              <h5>* Deberá haber una comunicación estrecha entre el cliente y yo para afinar detalles del funcionamiento</h5>
-              <h5>* El presupuesto quincenal considera posibles extensiones en el tiempo de desarrollo debido a cambios no anticipados</h5>
-              <h5>* El presupuesto no incluye IVA</h5>
-              <h5>* El presupuesto no considera los gastos de infraestructura: servidores, dominios, bases de datos, máquinas virtuales u otros servicios ajenos al desarrollo local</h5>
+              <h3>Presupuesto</h3>
+              <h5>* El presupuesto considera los gastos de infraestructura: servidores, dominios, bases de datos, máquinas virtuales u otros servicios ajenos al desarrollo local <strong>por el plazo de 1 año a partir de la fecha del primer pago</strong>. Posterior a este tiempo, es responsabilidad del cliente atender las notificaciones del cobro y consumo de estos servicios.</h5>
             </aside>
             <div class="budget-wrapper">
-              <div class="row">
-                <div class="col-sm-6">
-                  <article class="budget-card">
-                    <div class="top">
-                      <div class="price"><span>Q4,800.00</span></div>
-                      <div class="currency"><span>GTQ/Quincenal | *No incluye IVA</span></div>
-                    </div>
-                    <div class="center">
-                      <div class="budget-row">
-                        <div class="left"><span>1 quincena de anticipo</span></div>
-                        <div class="right"><span>Q4,800.00</span></div>
-                      </div>
-                      <div class="budget-row">
-                        <div class="left"><span>Pagos quincenales</span></div>
-                        <div class="right"><span>Q4,800.00</span></div>
-                      </div>
-                    </div>
-                    <div class="bottom"></div>
-                  </article>
+              <article class="budget-card">
+                <div class="top">
+                  <div class="price"><span>$5,815.00</span></div>
+                  <div class="currency"><span>USD | *No incluye IVA</span></div>
                 </div>
-              </div>
+                <div class="center">
+                  <h6 style="padding: 14px;">CONCEPTOS:</h6>
+                  <div class="budget-row">
+                    <div class="left"><span>Producto 1 (20%)</span></div>
+                    <div class="right"><span>$1,163.00</span></div>
+                  </div>
+                  <div class="budget-row">
+                    <div class="left"><span>Producto 2 (50%)</span></div>
+                    <div class="right"><span>$2,907.50</span></div>
+                  </div>
+                  <div class="budget-row">
+                    <div class="left"><span>Producto 3 (30%)</span></div>
+                    <div class="right"><span>$1,744.50</span></div>
+                  </div>
+                </div>
+                <div class="bottom">
+                  <div class="budget-row">
+                    <div class="left"><span>Total</span></div>
+                    <div class="right"><span>$5,815.00</span></div>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
         </div>
