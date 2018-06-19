@@ -11198,3 +11198,9 @@ h6 {
 .budget-wrapper .budget-card .budget-row .right {
   padding: 0.5rem 15px;
 }
+
+.budget-wrapper .budget-card .bottom .left {
+  font-family: "Noto Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}

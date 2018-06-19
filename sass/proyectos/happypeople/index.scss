@@ -14,5 +14,10 @@
         padding: get-spacer(2) $container-fluid;
       }
     }
+    .bottom {
+      .left {
+        @include bold;
+      }
+    }
   }
 }
