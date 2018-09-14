@@ -10,7 +10,9 @@
   "author": "netpoe",
   "license": "ISC",
   "devDependencies": {
-    "ebm": "easyboxmodel/ebm"
+    "browser-sync": "^2.24.7",
+    "ebm": "easyboxmodel/ebm",
+    "gulp-file-include": "^2.0.1"
   },
   "dependencies": {}
 }
